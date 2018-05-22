@@ -16,10 +16,16 @@ def print_header():
     print('--------------------------------')
     print()
 
+    start_time = datetime.datetime.now()
+
+    print('Welcome to Pomodoro Timer! It is currently {}.'.format(
+        start_time.strftime("%A, %B %d %Y %H:%M:%S")
+    ))
+
+    print()
+
 
 def timer_loop():
-
-    print(str(datetime.datetime.now()))
 
     completed_tasks = 0
 
@@ -27,6 +33,7 @@ def timer_loop():
 
     while option != 'q':
 
+        print()
         print('You have completed {} tasks'.format(completed_tasks))
 
         option = input('Enter any key to start task timer or q to quit: ')
@@ -44,19 +51,38 @@ def timer_loop():
 
 def task_timer(task_time=25):
 
-    print('Task timer started.')
+    task_end = datetime.datetime.now() + datetime.timedelta(minutes=task_time)
 
-    time.sleep(task_time)
+    print('Task timer started. You have until {} to finish your task.'.format(
+        task_end.strftime("%A, %B %d %Y %H:%M:%S")
+    ))
 
-    os.system('say "Good Work! Go have a break."')
+    time.sleep(task_time*60)
+
+    task_end_message = "Task time is up! Good Work! Go have a break."
+
+    print(task_end_message)
+
+    os.system('say "{}" '.format(task_end_message))
 
 
 def break_timer(completed_tasks=0):
 
     break_time = get_break_time(completed_tasks)
-    time.sleep(break_time)
 
-    os.system('say "Time is up! Your break is over. Get back to work!"')
+    break_end = datetime.datetime.now() + datetime.timedelta(minutes=break_time)
+
+    print('Break timer started. You have until {} for your break.'.format(
+        break_end.strftime("%A, %B %d %Y %H:%M:%S")
+    ))
+
+    time.sleep(break_time*60)
+
+    break_end_message = "Break time is up! Your break is over. Get back to work!"
+
+    print(break_end_message)
+
+    os.system('say "{}" '.format(break_end_message))
 
 
 def get_break_time(completed_tasks=0):

@@ -104,3 +104,33 @@ states_list = ['Oklahoma',
                'Iowa',
                'Michigan',
                'Delaware']
+
+# Print out the 10th item in each.
+i = 0
+for k, v in us_state_abbrev.items():
+    if i == 9:
+        print(k, v)
+        i += 1
+    else:
+        i += 1
+
+print(states_list[9])
+
+# Print out the 45th key in the dictionary.
+i = 0
+for k in us_state_abbrev.keys():
+    if i == 44:
+        print(k)
+        i += 1
+    else:
+        i += 1
+
+
+# Print out the 27th value in the dictionary.
+i = 0
+for v in us_state_abbrev.values():
+    if i == 26:
+        print(v)
+        i += 1
+    else:
+        i += 1

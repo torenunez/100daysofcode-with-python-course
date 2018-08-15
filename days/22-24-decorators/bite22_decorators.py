@@ -43,8 +43,8 @@ def make_html(decorator_arg1):
 
     def my_decorator(func):
 
-        def wrapped(function_arg1):
-            return '<{0}><{1}></{0}>'.format(decorator_arg1, func(function_arg1))
+        def wrapped(**kwargs):
+            return '<{0}>{1}</{0}>'.format(decorator_arg1, func(**kwargs))
 
         return wrapped
 
@@ -53,7 +53,8 @@ def make_html(decorator_arg1):
 
 @make_html('p')
 @make_html('strong')
-def get_text(text):
+def get_text(text='I code with PyBites'):
     return text
 
-get_text('I code with PyBites')
+
+get_text()

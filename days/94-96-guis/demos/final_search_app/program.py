@@ -1,4 +1,4 @@
-import api
+pip import api
 from gooey import GooeyParser, Gooey
 
 
